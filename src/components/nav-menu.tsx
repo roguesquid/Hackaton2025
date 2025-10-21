@@ -9,16 +9,16 @@ import Link from 'next/link';
 
 const navItems = [
   {
+    href: '/long-term-trends',
+    title: 'Tendencias a futuras',
+    description: 'Muestra los sabores que serán tendencia en el futuro.',
+    icon: <TrendingUp className="h-8 w-8 text-accent" />,
+  },
+  {
     href: '/marketing-report',
     title: 'Reporte de Marketing',
     description: 'Visualiza KPIs y métricas clave.',
     icon: <BarChart3 className="h-8 w-8 text-accent" />,
-  },
-  {
-    href: '/long-term-trends',
-    title: 'Tendencias a Largo Plazo',
-    description: 'Analiza el rendimiento del producto a lo largo del tiempo.',
-    icon: <TrendingUp className="h-8 w-8 text-accent" />,
   },
 ];
 
