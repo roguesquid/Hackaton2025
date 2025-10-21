@@ -16,18 +16,7 @@ export default function ProductFactSheetPage() {
               <span className="sr-only">Volver</span>
             </Link>
           </Button>
-          <h1 className="text-3xl font-bold">Ficha de Producto</h1>
-        </div>
-
-        <div
-          className="bg-primary/10 border-l-4 border-primary text-primary-foreground/80 p-4 mb-8 rounded-r-lg"
-          role="alert"
-        >
-          <p className="font-bold text-primary">Nota del desarrollador</p>
-          <p className="text-foreground">
-            Los datos mostrados son de ejemplo. Conecte aquí el agente de n8n
-            para obtener datos en tiempo real.
-          </p>
+          <h1 className="text-3xl font-bold">Ficha del producto</h1>
         </div>
 
         <ProductSheet />

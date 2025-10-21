@@ -53,46 +53,37 @@ export const trendsData = [
 ];
 
 export const productData = {
-  name: 'Flips Sabor Chocolate Avellana',
-  code: 'FL-CH-AV-01',
-  version: 'v2.3',
-  date: '2024-07-26',
-  sensoryCriteria: [
+  saborGalleta: 'Tradicional',
+  saborRelleno: 'Chocolate',
+  presentacion: '220gr',
+  salidaProduccion: 1995,
+  estatus: 'Activo en mercado',
+  observacion: 'Producto con posicionamiento en el mercado',
+  criteriosSensoriales: [
     {
-      name: 'Apariencia',
-      descriptors: [
-        { name: 'Color Uniforme', intensity: 8 },
-        { name: 'Forma Regular', intensity: 9 },
-        { name: 'Cobertura Completa', intensity: 7 },
-      ],
+      criterio: 'Apariencia',
+      descriptores:
+        'Almohadas rectangulares, porosa. Proporción homogénea de galleta y relleno.',
     },
     {
-      name: 'Aroma',
-      descriptors: [
-        { name: 'Chocolate Intenso', intensity: 9 },
-        { name: 'Nota de Avellana', intensity: 8 },
-        { name: 'Dulce', intensity: 7 },
-      ],
+      criterio: 'Color',
+      descriptores: 'Galleta marrón claro.',
     },
     {
-      name: 'Sabor',
-      descriptors: [
-        { name: 'Equilibrio Dulce/Cacao', intensity: 8 },
-        { name: 'Postgusto a Avellana', intensity: 9 },
-      ],
+      criterio: 'Olor',
+      descriptores: 'A cereal. A dulce. A chocolate',
     },
     {
-      name: 'Textura',
-      descriptors: [
-        { name: 'Crujiente', intensity: 10 },
-        { name: 'Disolución en Boca', intensity: 7 },
-      ],
+      criterio: 'Sabor',
+      descriptores: 'A chocolate. A cereal. A dulce. A avena. A arroz. A trigo',
     },
-  ],
-  generalBalance: [
-    { name: 'Dulzor', value: 'Alto', score: 8 },
-    { name: 'Salado', value: 'Bajo', score: 2 },
-    { name: 'Acidez', value: 'Nula', score: 1 },
-    { name: 'Amargor (Cacao)', value: 'Medio', score: 5 },
+    {
+      criterio: 'Textura',
+      descriptores: 'Crujiente. Porosa. Tostada. Suave',
+    },
+    {
+      criterio: 'Sensación Residual',
+      descriptores: 'A Dulce. A chocolate. A cereal.',
+    },
   ],
 };
