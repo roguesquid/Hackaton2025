@@ -1,7 +1,8 @@
 import { Header } from '@/components/header';
-import { TrendsChart } from '@/components/trends-chart';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { futureTrends } from '@/lib/data';
+import { ArrowLeft, ArrowRight, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export default function LongTermTrendsPage() {
@@ -16,7 +17,7 @@ export default function LongTermTrendsPage() {
               <span className="sr-only">Volver</span>
             </Link>
           </Button>
-          <h1 className="text-3xl font-bold">Tendencias a Largo Plazo</h1>
+          <h1 className="text-3xl font-bold">Tendencias a Futuro</h1>
         </div>
 
         <div
@@ -25,12 +26,40 @@ export default function LongTermTrendsPage() {
         >
           <p className="font-bold text-primary">Nota del desarrollador</p>
           <p className="text-foreground">
-            Los datos mostrados son de ejemplo. Conecte aquí el agente de n8n
-            para obtener datos en tiempo real.
+            Estos sabores son una predicción generada por IA. Conecte su agente
+            n8n para obtener análisis de tendencias en tiempo real.
           </p>
         </div>
 
-        <TrendsChart />
+        <section className="flex flex-col gap-6">
+           <h2 className="text-2xl font-bold tracking-tight mb-2">
+            Top 5 Sabores Tendencia
+          </h2>
+          {futureTrends.map((flavor) => (
+            <Link
+              key={flavor.rank}
+              href={`/product/${flavor.slug}`}
+              className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg group"
+            >
+              <Card className="transition-all duration-300 ease-in-out hover:shadow-xl hover:border-primary">
+                <CardHeader>
+                  <div className='flex justify-between items-start'>
+                    <div>
+                      <CardTitle className="text-xl">#{flavor.rank} {flavor.name}</CardTitle>
+                      <CardDescription className="mt-1">{flavor.description}</CardDescription>
+                    </div>
+                     <TrendingUp className="h-6 w-6 text-accent" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-sm font-semibold text-primary flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Ver ficha del futuro <ArrowRight className="ml-2 h-4 w-4" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </section>
       </main>
     </div>
   );
