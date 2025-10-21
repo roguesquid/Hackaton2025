@@ -5,7 +5,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { topFlavors } from '@/lib/data';
-import { Flame, Citrus, Sparkles } from 'lucide-react';
+import { Flame, Citrus, Sparkles, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 const ICONS: { [key: string]: React.ReactNode } = {
@@ -25,20 +25,27 @@ export function TopFlavors() {
           <Link
             key={flavor.rank}
             href={`/product/${flavor.slug}`}
-            className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
+            className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg group"
           >
             <Card
-              className="h-full transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1"
+              className="h-full flex flex-col justify-between transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1"
             >
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-lg font-medium">{flavor.name}</CardTitle>
-                {ICONS[flavor.name]}
-              </CardHeader>
+              <div>
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-lg font-medium">{flavor.name}</CardTitle>
+                  {ICONS[flavor.name]}
+                </CardHeader>
+                <CardContent>
+                  <div className="text-6xl font-bold text-primary">#{flavor.rank}</div>
+                  <p className="text-sm text-muted-foreground mt-2">
+                    {flavor.description}
+                  </p>
+                </CardContent>
+              </div>
               <CardContent>
-                <div className="text-6xl font-bold text-primary">#{flavor.rank}</div>
-                <p className="text-sm text-muted-foreground mt-2">
-                  {flavor.description}
-                </p>
+                <div className="text-sm font-semibold text-primary flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  Ver ficha <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
               </CardContent>
             </Card>
           </Link>
