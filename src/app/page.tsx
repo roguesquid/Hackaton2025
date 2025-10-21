@@ -1,3 +1,20 @@
+import { Header } from '@/components/header';
+import { NavMenu } from '@/components/nav-menu';
+import { TopFlavors } from '@/components/top-flavors';
+
 export default function Home() {
-  return <></>;
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow container mx-auto px-4 py-8 md:py-12">
+        <div className="space-y-16">
+          <TopFlavors />
+          <NavMenu />
+        </div>
+      </main>
+      <footer className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
+        Flips Insights Dashboard
+      </footer>
+    </div>
+  );
 }

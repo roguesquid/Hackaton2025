@@ -1,3 +1,10 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "product_image_1",
+      "description": "Flips product image",
+      "imageUrl": "https://images.unsplash.com/photo-1578687595055-d15759a04151?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjZXJlYWwlMjBzbmFja3xlbnwwfHx8fDE3NjEwNTc1MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cereal snack"
+    }
+  ]
 }
