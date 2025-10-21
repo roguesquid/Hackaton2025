@@ -4,7 +4,7 @@ import {
   CardTitle,
   CardDescription,
 } from '@/components/ui/card';
-import { BarChart3, TrendingUp, FileText } from 'lucide-react';
+import { BarChart3, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 const navItems = [
@@ -19,12 +19,6 @@ const navItems = [
     title: 'Tendencias a Largo Plazo',
     description: 'Analiza el rendimiento del producto a lo largo del tiempo.',
     icon: <TrendingUp className="h-8 w-8 text-accent" />,
-  },
-  {
-    href: '/product-fact-sheet',
-    title: 'Ficha de Producto',
-    description: 'Detalles sensoriales y descriptores de productos.',
-    icon: <FileText className="h-8 w-8 text-accent" />,
   },
 ];
 

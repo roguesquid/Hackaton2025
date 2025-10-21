@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -13,7 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { productData } from '@/lib/data';
 
 function InfoItem({ label, value }: { label: string; value: string | number }) {
   return (
@@ -24,7 +22,7 @@ function InfoItem({ label, value }: { label: string; value: string | number }) {
   );
 }
 
-export function ProductSheet() {
+export function ProductSheet({ productData }: { productData: any }) {
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
@@ -58,7 +56,7 @@ export function ProductSheet() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {productData.criteriosSensoriales.map((item) => (
+              {productData.criteriosSensoriales.map((item: any) => (
                 <TableRow key={item.criterio}>
                   <TableCell className="font-medium">{item.criterio}</TableCell>
                   <TableCell>{item.descriptores}</TableCell>

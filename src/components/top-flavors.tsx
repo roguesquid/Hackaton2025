@@ -6,6 +6,7 @@ import {
 } from '@/components/ui/card';
 import { topFlavors } from '@/lib/data';
 import { Flame, Citrus, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
 const ICONS: { [key: string]: React.ReactNode } = {
   'Spicy Fire': <Flame className="h-6 w-6 text-primary" />,
@@ -21,21 +22,26 @@ export function TopFlavors() {
       </h2>
       <div className="grid gap-6 md:grid-cols-3">
         {topFlavors.map((flavor) => (
-          <Card
+          <Link
             key={flavor.rank}
-            className="transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1"
+            href={`/product/${flavor.slug}`}
+            className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
           >
-            <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-lg font-medium">{flavor.name}</CardTitle>
-              {ICONS[flavor.name]}
-            </CardHeader>
-            <CardContent>
-              <div className="text-6xl font-bold text-primary">#{flavor.rank}</div>
-              <p className="text-sm text-muted-foreground mt-2">
-                {flavor.description}
-              </p>
-            </CardContent>
-          </Card>
+            <Card
+              className="h-full transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1"
+            >
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-lg font-medium">{flavor.name}</CardTitle>
+                {ICONS[flavor.name]}
+              </CardHeader>
+              <CardContent>
+                <div className="text-6xl font-bold text-primary">#{flavor.rank}</div>
+                <p className="text-sm text-muted-foreground mt-2">
+                  {flavor.description}
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
         ))}
       </div>
     </section>
