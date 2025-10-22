@@ -14,12 +14,6 @@ const navItems = [
     description: 'Muestra los sabores que serán tendencia en el futuro.',
     icon: <TrendingUp className="h-8 w-8 text-accent" />,
   },
-  {
-    href: '/marketing-report',
-    title: 'Reporte de Marketing',
-    description: 'Visualiza KPIs y métricas clave.',
-    icon: <BarChart3 className="h-8 w-8 text-accent" />,
-  },
 ];
 
 export function NavMenu() {
