@@ -3,6 +3,9 @@ import { NavMenu } from '@/components/nav-menu';
 import { TopFlavors } from '@/components/top-flavors';
 import { FocusGroupUpload } from '@/components/focus-group-upload';
 
+export const dynamic = 'force-dynamic';
+
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
