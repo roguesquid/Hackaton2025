@@ -15,7 +15,7 @@ export default function Home() {
         </div>
       </main>
       <footer className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
-        Flips Insights Dashboard
+        Jorge Ramírez, Luis Martín, Massiel Perozo
       </footer>
     </div>
   );
