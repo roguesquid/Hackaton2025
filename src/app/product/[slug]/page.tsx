@@ -1,17 +1,18 @@
 import { Header } from '@/components/header';
 import { ProductSheet } from '@/components/product-sheet';
 import { Button } from '@/components/ui/button';
-import { productDetails } from '@/lib/data';
+import { getFlavors, formatSlug } from '@/lib/data-service';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export default function ProductFactSheetPage({
+export default async function ProductFactSheetPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const productData = productDetails[params.slug] || productDetails['default'];
+  const flavors = await getFlavors();
+  const productData = flavors.find(flavor => formatSlug(flavor.flavorConcept) === params.slug);
 
   if (!productData) {
     notFound();
@@ -28,7 +29,7 @@ export default function ProductFactSheetPage({
               <span className="sr-only">Volver</span>
             </Link>
           </Button>
-          <h1 className="text-3xl font-bold">Ficha del producto: {productData.name}</h1>
+          <h1 className="text-3xl font-bold">Ficha del producto: {productData.flavorConcept}</h1>
         </div>
 
         <ProductSheet productData={productData} />
@@ -37,8 +38,9 @@ export default function ProductFactSheetPage({
   );
 }
 
-export function generateStaticParams() {
-  return Object.keys(productDetails).filter(key => key !== 'default').map((slug) => ({
-    slug,
+export async function generateStaticParams() {
+  const flavors = await getFlavors();
+  return flavors.map((flavor) => ({
+    slug: formatSlug(flavor.flavorConcept),
   }));
 }

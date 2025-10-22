@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/table';
 
 function InfoItem({ label, value }: { label: string; value: string | number }) {
+  if (!value) return null;
   return (
     <div>
       <p className="text-sm text-muted-foreground">{label}</p>
@@ -23,49 +24,74 @@ function InfoItem({ label, value }: { label: string; value: string | number }) {
 }
 
 export function ProductSheet({ productData }: { productData: any }) {
+
+  const criteriosSensoriales = [
+    { criterio: 'Apariencia', descriptores: productData.sensorial_Apariencia },
+    { criterio: 'Color', descriptores: productData.sensorial_Color },
+    { criterio: 'Olor', descriptores: productData.sensorial_Olor },
+    { criterio: 'Sabor', descriptores: productData.sensorial_Sabor },
+    { criterio: 'Textura', descriptores: productData.sensorial_Textura }
+  ].filter(item => item.descriptores);
+
   return (
     <div className="space-y-8">
       <Card className="shadow-lg">
+        <CardHeader>
+          <CardTitle>Ficha Técnica</CardTitle>
+        </CardHeader>
         <CardContent className="p-6">
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            <InfoItem label="Sabor galleta" value={productData.saborGalleta} />
-            <InfoItem label="Sabor relleno" value={productData.saborRelleno} />
-            <InfoItem label="Presentación" value={productData.presentacion} />
-            <InfoItem
-              label="Salida a producción"
-              value={productData.salidaProduccion}
-            />
-            <InfoItem label="Estatus" value={productData.estatus} />
-          </div>
-          <div className="mt-6">
-            <InfoItem label="Observación" value={productData.observacion} />
+            <InfoItem label="Nombre" value={productData.ficha_Nombre} />
+            <InfoItem label="Descripción Corta" value={productData.ficha_DescripcionCorta} />
+            <InfoItem label="Sabor de Galleta" value={productData.ficha_SaborDeGalleta} />
+            <InfoItem label="Sabor de Relleno" value={productData.ficha_SaborDeRelleno} />
+            <InfoItem label="Presentación" value={productData.ficha_Presentacion} />
           </div>
         </CardContent>
       </Card>
 
+      {criteriosSensoriales.length > 0 && (
+        <Card className="shadow-lg">
+          <CardHeader>
+            <CardTitle>Criterios Sensoriales</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[200px]">Criterio</TableHead>
+                  <TableHead>Descriptores</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {criteriosSensoriales.map((item) => (
+                  <TableRow key={item.criterio}>
+                    <TableCell className="font-medium">{item.criterio}</TableCell>
+                    <TableCell>{item.descriptores}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      )}
+
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle>Criterios Sensoriales</CardTitle>
+          <CardTitle>Marketing</CardTitle>
         </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="w-[200px]">Criterios Sensoriales</TableHead>
-                <TableHead>Descriptores o Notas</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {productData.criteriosSensoriales.map((item: any) => (
-                <TableRow key={item.criterio}>
-                  <TableCell className="font-medium">{item.criterio}</TableCell>
-                  <TableCell>{item.descriptores}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <CardContent className="p-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <InfoItem label="Target Audience Fit" value={productData.marketing_targetAudienceFit} />
+                <InfoItem label="Consumer Language" value={productData.marketing_consumerLanguage} />
+                <InfoItem label="Key Selling Points" value={productData.marketing_keySellingPoints} />
+                <InfoItem label="Competitive Angle" value={productData.marketing_competitiveAngle} />
+                <InfoItem label="Packaging Concept" value={productData.marketing_packagingConcept} />
+            </div>
         </CardContent>
       </Card>
+
+      
     </div>
   );
 }

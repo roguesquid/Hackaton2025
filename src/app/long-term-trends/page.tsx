@@ -1,11 +1,14 @@
 import { Header } from '@/components/header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { futureTrends } from '@/lib/data';
+import { getFlavors, formatSlug } from '@/lib/data-service';
 import { ArrowLeft, ArrowRight, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
-export default function LongTermTrendsPage() {
+export default async function LongTermTrendsPage() {
+  const flavors = await getFlavors();
+  const futureTrends = flavors.filter(flavor => flavor.isLongTerm);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -35,18 +38,18 @@ export default function LongTermTrendsPage() {
            <h2 className="text-2xl font-bold tracking-tight mb-2">
             Top 5 Sabores Tendencia
           </h2>
-          {futureTrends.map((flavor) => (
+          {futureTrends.map((flavor, index) => (
             <Link
-              key={flavor.rank}
-              href={`/product/${flavor.slug}`}
+              key={index}
+              href={`/product/${formatSlug(flavor.flavorConcept)}`}
               className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg group"
             >
               <Card className="transition-all duration-300 ease-in-out hover:shadow-xl hover:border-primary">
                 <CardHeader>
                   <div className='flex justify-between items-start'>
                     <div>
-                      <CardTitle className="text-xl">#{flavor.rank} {flavor.name}</CardTitle>
-                      <CardDescription className="mt-1">{flavor.description}</CardDescription>
+                      <CardTitle className="text-xl">#{index + 1} {flavor.flavorConcept}</CardTitle>
+                      <CardDescription className="mt-1">{flavor.ficha_DescripcionCorta}</CardDescription>
                     </div>
                      <TrendingUp className="h-6 w-6 text-accent" />
                   </div>

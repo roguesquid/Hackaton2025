@@ -4,27 +4,24 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { topFlavors } from '@/lib/data';
-import { Flame, Citrus, Sparkles, ArrowRight } from 'lucide-react';
+import { getFlavors, formatSlug } from '@/lib/data-service';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-const ICONS: { [key: string]: React.ReactNode } = {
-  'Spicy Fire': <Flame className="h-6 w-6 text-primary" />,
-  'Lemon Zest': <Citrus className="h-6 w-6 text-primary" />,
-  'Cheese Supreme': <Sparkles className="h-6 w-6 text-primary" />,
-};
+export async function TopFlavors() {
+  const flavors = await getFlavors();
+  const topFlavors = flavors.filter(flavor => !flavor.isLongTerm).slice(0, 3);
 
-export function TopFlavors() {
   return (
     <section>
       <h2 className="text-3xl font-bold tracking-tight mb-6">
         Top 3 Sabores de Flips
       </h2>
       <div className="grid gap-6 md:grid-cols-3">
-        {topFlavors.map((flavor) => (
+        {topFlavors.map((flavor, index) => (
           <Link
-            key={flavor.rank}
-            href={`/product/${flavor.slug}`}
+            key={index}
+            href={`/product/${formatSlug(flavor.flavorConcept)}`}
             className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg group"
           >
             <Card
@@ -32,13 +29,12 @@ export function TopFlavors() {
             >
               <div>
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-lg font-medium">{flavor.name}</CardTitle>
-                  {ICONS[flavor.name]}
+                  <CardTitle className="text-lg font-medium">{flavor.flavorConcept}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-6xl font-bold text-primary">#{flavor.rank}</div>
+                  <div className="text-6xl font-bold text-primary">#{index + 1}</div>
                   <p className="text-sm text-muted-foreground mt-2">
-                    {flavor.description}
+                    {flavor.ficha_DescripcionCorta}
                   </p>
                 </CardContent>
               </div>
