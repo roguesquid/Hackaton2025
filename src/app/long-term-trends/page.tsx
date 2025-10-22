@@ -5,6 +5,8 @@ import { getFlavors, formatSlug } from '@/lib/data-service';
 import { ArrowLeft, ArrowRight, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default async function LongTermTrendsPage() {
   const flavors = await getFlavors();
   const futureTrends = flavors.filter(flavor => flavor.isLongTerm);

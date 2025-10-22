@@ -6,6 +6,8 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProductFactSheetPage({
   params,
 }: {
@@ -36,11 +38,4 @@ export default async function ProductFactSheetPage({
       </main>
     </div>
   );
-}
-
-export async function generateStaticParams() {
-  const flavors = await getFlavors();
-  return flavors.map((flavor) => ({
-    slug: formatSlug(flavor.flavorConcept),
-  }));
 }

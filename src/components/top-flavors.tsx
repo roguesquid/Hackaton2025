@@ -21,7 +21,7 @@ export async function TopFlavors() {
         {topFlavors.map((flavor, index) => (
           <Link
             key={index}
-            href={`/product/${formatSlug(flavor.flavorConcept)}`}
+            href={`/product/${formatSlug(flavor.ficha_DescripcionCorta)}`}
             className="focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg group"
           >
             <Card
@@ -29,7 +29,7 @@ export async function TopFlavors() {
             >
               <div>
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-lg font-medium">{flavor.flavorConcept}</CardTitle>
+                  <CardTitle className="text-lg font-medium">{flavor.ficha_DescripcionCorta}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="text-6xl font-bold text-primary">#{index + 1}</div>

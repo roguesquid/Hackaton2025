@@ -45,7 +45,7 @@ export function ProductSheet({ productData }: { productData: any }) {
             <InfoItem label="Descripción Corta" value={productData.ficha_DescripcionCorta} />
             <InfoItem label="Sabor de Galleta" value={productData.ficha_SaborDeGalleta} />
             <InfoItem label="Sabor de Relleno" value={productData.ficha_SaborDeRelleno} />
-            <InfoItem label="Presentación" value={productData.ficha_Presentacion} />
+            <InfoItem label="Presentación" value={"Por definir"} />
           </div>
         </CardContent>
       </Card>
