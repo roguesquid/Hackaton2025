@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Image from 'next/image';
 
 function InfoItem({ label, value }: { label: string; value: string | number }) {
   if (!value) return null;

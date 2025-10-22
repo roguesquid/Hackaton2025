@@ -7,10 +7,16 @@ import {
 import { getFlavors, formatSlug } from '@/lib/data-service';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export async function TopFlavors() {
   const flavors = await getFlavors();
   const topFlavors = flavors.filter(flavor => !flavor.isLongTerm).slice(0, 3);
+  const images = [
+    '/Red_Velvet_Elegance.png',
+    '/Limón_y_Jengibre_Zesty.png',
+    '/coco_exotico.png'
+  ];
 
   return (
     <section>
@@ -27,6 +33,15 @@ export async function TopFlavors() {
             <Card
               className="h-full flex flex-col justify-between transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1"
             >
+              <CardContent className="p-4 flex justify-center">
+                <Image
+                  src={images[index]}
+                  alt={flavor.flavorConcept}
+                  width={200}
+                  height={200}
+                  className="rounded-lg"
+                />
+              </CardContent>
               <div>
                 <CardHeader className="flex flex-row items-center justify-between pb-2">
                   <CardTitle className="text-lg font-medium">{flavor.flavorConcept}</CardTitle>

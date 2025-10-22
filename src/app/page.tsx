@@ -14,7 +14,6 @@ export default function Home() {
         <div className="space-y-16">
           <TopFlavors />
           <NavMenu />
-          <FocusGroupUpload />
         </div>
       </main>
       <footer className="container mx-auto px-4 py-6 text-center text-sm text-muted-foreground">
